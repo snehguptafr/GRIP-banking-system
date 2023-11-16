@@ -1,7 +1,59 @@
-.nav-pills > a{
-    color: inherit;
-    text-decoration: none;
+/* Add these styles to your existing styles or create a new CSS file */
+
+nav {
+  background: #2c3e50;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-.active{
-    font-weight: 800;
+
+.nav-heading {
+  font-size: 24px;
+  color: #ecf0f1;
+  font-weight: bold;
+}
+
+.nav-links {
+  margin-top: 15px;
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
+}
+
+.nav-pills {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #ecf0f1;
+  text-decoration: none;
+  background-color: #3498db;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-pills:hover {
+  background-color: #2980b9;
+}
+
+.active {
+  background-color: #2980b9;
+  font-weight: 600;
+}
+
+.nav-pills, .active {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .nav-pills {
+    display: block;
+    width: 150px;
+    /* margin: 10px 0; */
+  }
+  .nav-links{
+    flex-direction: column;
+    gap: 10px;
+  }
 }
