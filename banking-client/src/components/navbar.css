@@ -1,0 +1,7 @@
+.nav-pills > a{
+    color: inherit;
+    text-decoration: none;
+}
+.active{
+    font-weight: 800;
+}
