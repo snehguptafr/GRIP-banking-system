@@ -4,6 +4,10 @@ export default function Customers() {
   return (
     <main className="customers">
       <h1>All customers</h1>
+      <p>
+        Click on any record to transfer money to that account.
+      </p>
+      <p>Balance: 500000</p>
 
       <table>
         <thead>
