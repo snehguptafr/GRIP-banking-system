@@ -1,6 +1,19 @@
 import "./customers.css"
+import { useEffect, useState } from "react";
 
 export default function Customers() {
+  const [data, setData] = useState([]);
+
+  const apiUrl = import.meta.env.VITE_API_URL;
+  useEffect(() => {
+    fetch(apiUrl)
+      .then(res => res.json())
+      .then(data => setData(data))
+      .catch(e => console.log("Error fetching data\n"+e))
+  },[apiUrl])
+
+  console.log(data)
+
   return (
     <main className="customers">
       <h1>All customers</h1>
