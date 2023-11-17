@@ -3,7 +3,7 @@
 import  { useState } from 'react';
 import './transfer.css';
 
-export default function Transfer({ onClose, beneficiary }) {
+export default function Transfer({ onClose, details }) {
   const [amount, setAmount] = useState('');
 
   const handleSubmit = (e) => {
@@ -22,16 +22,17 @@ export default function Transfer({ onClose, beneficiary }) {
           <button className="close-btn" onClick={onClose}>Close</button>
         </div>
         <div className="beneficiary-info">
-          <p>Beneficiary Name: {beneficiary.name}</p>
-          <p>Beneficiary Account No.: {beneficiary.accountNo}</p>
-          <p>Beneficiary E-mail: {beneficiary.email}</p>
-          <p>Your Balance: {beneficiary.balance} {/* Replace with actual balance */}</p>
+          <p>Beneficiary Name: {details.name}</p>
+          <p>Beneficiary Account No.: {details.accountNo}</p>
+          <p>Beneficiary E-mail: {details.email}</p>
+          <p>Your Balance: {details.balance} {/* Replace with actual balance */}</p>
         </div>
         <form onSubmit={handleSubmit}>
           <label>
             Amount:
             <input
               type="number"
+              step="any"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               required
