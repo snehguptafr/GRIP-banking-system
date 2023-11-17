@@ -46,10 +46,10 @@ app.listen(3000, () => {
 // Customer.insertMany([
 //   {
 //     customerID: 1,
-//     customerName: "Amit Patel",
-//     customerBalance: 5000.5,
+//     customerName: "You(Admin)",
+//     customerBalance: 500000,
 //     accountNumber: 123456789,
-//     email: "amit@example.com",
+//     email: "adminstrator@example.com",
 //   },
 //   {
 //     customerID: 2,
