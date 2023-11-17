@@ -17,6 +17,10 @@ th {
   color: #fff;
 }
 
+.admin-record{
+  font-weight: 500;
+}
+
 .record:hover{
   background-color: #ddd;
   cursor: pointer;
