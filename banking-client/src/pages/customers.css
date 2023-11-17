@@ -16,3 +16,8 @@ th {
   background-color: #3498db;
   color: #fff;
 }
+
+.record:hover{
+  background-color: #ddd;
+  cursor: pointer;
+}
