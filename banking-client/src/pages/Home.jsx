@@ -23,6 +23,9 @@ export default function Home() {
         by <a href="http://thesparksfoundation.sg/">The Sparks Foundation</a>.
         <br />
       </p>
+      <p className="repo-link">
+        <a href="https://github.com/snehguptafr/GRIP-banking-system">GitHub Repo</a>
+      </p>
       <p className="intern-link">
         Apply for internship:{" "}
         <a href="https://internship.thesparksfoundation.info/">
