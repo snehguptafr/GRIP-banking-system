@@ -1,8 +1,11 @@
 import "./customers.css"
 import { useEffect, useState } from "react";
+import Transfer from "../components/Transfer";
+
 
 export default function Customers() {
   const [data, setData] = useState([]);
+  const [transferDetails, setTransferDetails] = useState(false);
 
   const apiUrl = import.meta.env.VITE_API_URL;
   useEffect(() => {
@@ -12,7 +15,28 @@ export default function Customers() {
       .catch(e => console.log("Error fetching data\n"+e))
   },[apiUrl])
 
-  console.log(data)
+  const handleTransfer = (rec) => {
+    const details = {
+      name: rec.customerName,
+      accountNo: rec.accountNumber,
+      email: rec.email,
+      balance: rec.customerBalance
+    }
+    setTransferDetails(details);
+  }
+
+  const Records = data.map(record => {
+    return(
+      <tr key={record._id} className="record" onClick={() => handleTransfer(record)}>
+        <td>{record.accountNumber}</td>
+        <td>{record.customerName}</td>
+        <td>{record.email}</td>
+        <td>₹ {record.customerBalance}</td>
+      </tr>
+    )
+  })
+
+  console.log(transferDetails)
 
   return (
     <main className="customers">
@@ -20,7 +44,7 @@ export default function Customers() {
       <p>
         Click on any record to transfer money to that account.
       </p>
-      <p>Balance: 500000</p>
+      <p>Administrator&apos;s balance: ₹ 500000</p>
 
       <table>
         <thead>
@@ -32,6 +56,7 @@ export default function Customers() {
           </tr>
         </thead>
         <tbody>
+          {Records}
           <tr>
             <td>001</td>
             <td>John Doe</td>
@@ -46,6 +71,7 @@ export default function Customers() {
           </tr>
         </tbody>
       </table>
+      {transferDetails && <Transfer beneficiary={transferDetails} />}
     </main>
   );
 }
