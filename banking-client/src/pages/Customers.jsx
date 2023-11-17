@@ -16,18 +16,21 @@ export default function Customers() {
   },[apiUrl])
 
   const handleTransfer = (rec) => {
+    if (rec.customerID === 1){
+      return;
+    }
     const details = {
       name: rec.customerName,
       accountNo: rec.accountNumber,
       email: rec.email,
-      balance: rec.customerBalance
+      balance: data[0].customerBalance
     }
     setTransferDetails(details);
   }
 
   const Records = data.map(record => {
     return(
-      <tr key={record._id} className="record" onClick={() => handleTransfer(record)}>
+      <tr key={record._id} className={record.customerID === 1? "admin-record" : "record"} onClick={() => handleTransfer(record)}>
         <td>{record.accountNumber}</td>
         <td>{record.customerName}</td>
         <td>{record.email}</td>
@@ -36,15 +39,12 @@ export default function Customers() {
     )
   })
 
-  console.log(transferDetails)
-
   return (
     <main className="customers">
       <h1>All customers</h1>
       <p>
         Click on any record to transfer money to that account.
       </p>
-      <p>Administrator&apos;s balance: ₹ 500000</p>
 
       <table>
         <thead>
@@ -71,7 +71,7 @@ export default function Customers() {
           </tr>
         </tbody>
       </table>
-      {transferDetails && <Transfer beneficiary={transferDetails} />}
+      {transferDetails && <Transfer details={transferDetails} onClose={()=>setTransferDetails(false)} />}
     </main>
   );
 }
