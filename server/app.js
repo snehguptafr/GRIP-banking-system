@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const Customer = require("./customer");
 
@@ -7,6 +8,14 @@ require("dotenv").config();
 const connectionUrl = process.env.CONNECTION_URL;
 
 const app = express();
+
+const corsOptions = {
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", 'x-api-key'],
+};
+
+app.use(cors(corsOptions));
 
 mongoose
   .connect(connectionUrl)
@@ -25,7 +34,7 @@ app.get("/", (req, res) => {
 });
 app.get("/customers", async (req, res) => {
     const allCustomers = await Customer.find({});
-    res.send(allCustomers);
+    res.json(allCustomers);
     // Customer.find({}).then(data => res.send(data))
 });
 
