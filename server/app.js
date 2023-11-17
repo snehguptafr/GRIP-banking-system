@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const Customer = require("./customer");
+const bodyParser = require('body-parser');
+
 
 require("dotenv").config();
 
@@ -16,6 +18,8 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(bodyParser.json());
+// app.use(express.urlencoded({extended: false}))
 
 mongoose
   .connect(connectionUrl)
@@ -33,10 +37,28 @@ app.get("/", (req, res) => {
   });
 });
 app.get("/customers", async (req, res) => {
+  if(req.header('x-api-key') === process.env.API_KEY){
     const allCustomers = await Customer.find({});
     res.json(allCustomers);
-    // Customer.find({}).then(data => res.send(data))
+  }
+  else{
+    res.status(400).send({message:"Invalid API key"})
+  }
 });
+
+app.put("/customers/:accno", async (req, res) => {
+  if(req.header('x-api-key') === process.env.API_KEY){
+  const { accno } = req.params;
+  const details = req.body;
+  const ben = await Customer.findByIdAndUpdate({ accountNumber: details.beneficiaryAcc}, {$set: {customerBalance: details.beneficiaryBal}})
+  const adm = await Customer.findByIdAndUpdate({ accountNumber: details.adminAcc}, {$set: {customerBalance: details.adminBal}})
+  console.log(ben, adm)
+  res.send({message: "transaction successful"})
+  }
+  else{
+    res.status(400).send({message:"Invalid API key"})
+  }
+})
 
 app.listen(3000, () => {
   console.log("Server up on port 3000");

@@ -8,12 +8,18 @@ export default function Customers() {
   const [transferDetails, setTransferDetails] = useState(false);
 
   const apiUrl = import.meta.env.VITE_API_URL;
+  const apiKey = import.meta.env.VITE_API_KEY;
   useEffect(() => {
-    fetch(apiUrl)
+    fetch(apiUrl, {
+      method: 'get',
+      headers: {
+        'x-api-key': apiKey
+      }
+    })
       .then(res => res.json())
       .then(data => setData(data))
       .catch(e => console.log("Error fetching data\n"+e))
-  },[apiUrl])
+  },[apiUrl, apiKey])
 
   const handleTransfer = (rec) => {
     if (rec.customerID === 1){
@@ -23,7 +29,9 @@ export default function Customers() {
       name: rec.customerName,
       accountNo: rec.accountNumber,
       email: rec.email,
-      balance: data[0].customerBalance
+      balance: rec.customerBalance,
+      adminBalance: data[0].customerBalance,
+      adminAcc: data[0].accountNumber
     }
     setTransferDetails(details);
   }
@@ -71,7 +79,7 @@ export default function Customers() {
           </tr>
         </tbody>
       </table>
-      {transferDetails && <Transfer details={transferDetails} onClose={()=>setTransferDetails(false)} />}
+      {transferDetails && <Transfer details={transferDetails} api={apiUrl} secret={apiKey} onClose={()=>setTransferDetails(false)} />}
     </main>
   );
 }
