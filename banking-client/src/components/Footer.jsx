@@ -40,19 +40,24 @@ export default function Footer() {
       </div>
       <div className="personal">
         <span className="foot-head">Connect</span>
-        <span>
-          <a className="footer-link" href="https://www.github.com/snehguptafr">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a
-            className="footer-link"
-            href="https://www.linkedin.com/in/sneh-gupta"
-          >
-            LinkedIn
-          </a>
-        </span>
+        <div className="personal-links">
+          <span>
+            <a
+              className="footer-link"
+              href="https://www.github.com/snehguptafr"
+            >
+              GitHub
+            </a>
+          </span>
+          <span>
+            <a
+              className="footer-link"
+              href="https://www.linkedin.com/in/sneh-gupta"
+            >
+              LinkedIn
+            </a>
+          </span>
+        </div>
       </div>
     </footer>
   );
