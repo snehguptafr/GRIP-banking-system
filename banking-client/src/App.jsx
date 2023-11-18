@@ -9,12 +9,12 @@ export default function App() {
   return (
     <>
       <BrowserRouter>
-      <Navbar />
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/customers" element={<Customers />} />
         </Routes>
-      <Footer />
+        <Footer />
       </BrowserRouter>
     </>
   );

@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
 
-html{
-    min-height: 100vh;
+html {
+  min-height: 100vh;
 }
 
-body{
-    font-family: 'Montserrat', sans-serif;;
-    margin: 0;
-    padding: 0;
-    min-height: inherit;
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: inherit;
 }
 
-#root{
-    min-height: inherit;
-    display: flex;
-    flex-direction: column;
+#root {
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
 }

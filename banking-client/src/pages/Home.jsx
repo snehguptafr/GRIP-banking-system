@@ -15,8 +15,8 @@ export default function Home() {
       </p>
       <p>
         The main objective behind building this project was to learn and setup a
-        remote Mongo database, connect it to a Node server to read
-        and modify data and present it on client-side.
+        remote Mongo database, connect it to a Node server to read and modify
+        data and present it on client-side.
       </p>
       <p>
         This is project was a task under Graduate Rotational Internship Program
@@ -24,7 +24,9 @@ export default function Home() {
         <br />
       </p>
       <p className="repo-link">
-        <a href="https://github.com/snehguptafr/GRIP-banking-system">GitHub Repo</a>
+        <a href="https://github.com/snehguptafr/GRIP-banking-system">
+          GitHub Repo
+        </a>
       </p>
       <p className="intern-link">
         Apply for internship:{" "}
