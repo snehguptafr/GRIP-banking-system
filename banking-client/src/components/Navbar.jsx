@@ -10,7 +10,6 @@ export default function Navbar() {
       <div className="nav-links">
       <Link to={'/'}><span className={`nav-pills ${pathname === '/' && 'active'}`}>Home</span></Link>
       <Link to={'/customers'}><span className={`nav-pills ${pathname === '/customers' && 'active'}`}  >All Customers</span></Link>
-      <Link to={'/about'}><span className={`nav-pills ${pathname === '/about' && 'active'}`}  >About</span></Link>
       </div>
     </nav>
   );

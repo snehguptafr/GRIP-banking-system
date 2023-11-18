@@ -26,16 +26,6 @@ export default function Footer() {
               All Customers
             </Link>
           </li>
-          <li>
-            <Link
-              className={`footer-link ${
-                pathname === "/about" && "active-link"
-              }`}
-              to="/about"
-            >
-              About
-            </Link>
-          </li>
         </ul>
       </div>
       <div className="personal">
