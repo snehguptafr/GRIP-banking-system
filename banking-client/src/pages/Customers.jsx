@@ -65,18 +65,6 @@ export default function Customers() {
         </thead>
         <tbody>
           {Records}
-          <tr>
-            <td>001</td>
-            <td>John Doe</td>
-            <td>john@example.com</td>
-            <td>$1,000.00</td>
-          </tr>
-          <tr>
-            <td>002</td>
-            <td>Jane Doe</td>
-            <td>jane@example.com</td>
-            <td>$2,500.00</td>
-          </tr>
         </tbody>
       </table>
       {transferDetails && <Transfer details={transferDetails} api={apiUrl} secret={apiKey} onClose={()=>setTransferDetails(false)} />}
