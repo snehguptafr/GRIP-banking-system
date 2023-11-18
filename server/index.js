@@ -12,7 +12,7 @@ const connectionUrl = process.env.CONNECTION_URL;
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://grip-banking-system.vercel.app/",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", 'x-api-key'],
 };
