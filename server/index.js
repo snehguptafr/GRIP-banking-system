@@ -11,13 +11,14 @@ const connectionUrl = process.env.CONNECTION_URL;
 
 const app = express();
 
-const corsOptions = {
-  origin: "https://grip-banking-system.vercel.app/",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true
-};
+// const corsOptions = {
+//   origin: "https://grip-banking-system.vercel.app/",
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   credentials: true
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 // app.use(express.urlencoded({extended: false}))
 
