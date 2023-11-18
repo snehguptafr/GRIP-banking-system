@@ -1,20 +1,18 @@
-// OverlayForm.js
-
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./transfer.css";
 
 export default function Transfer({ onClose, api, secret, details }) {
   const [amount, setAmount] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (details.adminBalance < amount) {
       alert("Transfer amount is more than your balance, please recheck.");
     } else {
-      // Handle the form submission logic here
       console.log("Amount:", amount);
-      // You may want to perform further actions like API calls or state updates
-      // after the form submission.a
       const updatedData = {
         beneficiaryAcc: details.accountNo,
         beneficiaryBal: details.balance + parseFloat(amount),
@@ -34,6 +32,7 @@ export default function Transfer({ onClose, api, secret, details }) {
         .then((data) => console.log(data))
         .catch((e) => console.log("Error in transfer\n" + e));
       onClose();
+      navigate(0);
     }
   };
 
@@ -41,24 +40,25 @@ export default function Transfer({ onClose, api, secret, details }) {
     <div className="overlay">
       <div className="overlay-content">
         <div className="overlay-header">
-          <span className="overlay-title">Payment Form</span>
+          <span className="overlay-title">Transfer</span>
           <button className="close-btn" onClick={onClose}>
             Close
           </button>
         </div>
         <div className="beneficiary-info">
-          <p>Beneficiary Name: {details.name}</p>
-          <p>Beneficiary Account No.: {details.accountNo}</p>
-          <p>Beneficiary E-mail: {details.email}</p>
+          <p><span>Beneficiary Name:</span> {details.name}</p>
+          <p><span>Beneficiary Account No.:</span> {details.accountNo}</p>
+          <p><span>Beneficiary E-mail:</span> {details.email}</p>
           <p>
-            Your Balance: {details.adminBalance}{" "}
-            {/* Replace with actual balance */}
+            <span>Your Balance:</span> {details.adminBalance}{" "}
           </p>
         </div>
         <form onSubmit={handleSubmit}>
           <label>
             Amount:
             <input
+              autoFocus
+              min={1}
               type="number"
               step="any"
               value={amount}
