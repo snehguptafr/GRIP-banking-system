@@ -50,9 +50,11 @@ app.get("/customers", async (req, res) => {
 app.put("/customers", async (req, res) => {
   if(req.header('x-api-key') === process.env.API_KEY){
   // const { accno } = req.params;
+  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
   const details = req.body;
-  Customer.findOneAndUpdate({ accountNumber: details.beneficiaryAcc}, {$set: {customerBalance: details.beneficiaryBal}}).then(data => console.log("Beneficiary:\n"+data)).catch(e => console.log(e))
-  Customer.findOneAndUpdate({ accountNumber: details.adminAcc}, {$set: {customerBalance: details.adminBal}}).then(data => console.log("Admin:\n"+data)).catch(e => console.log(e))
+  const ben = await Customer.findOneAndUpdate({ accountNumber: details.beneficiaryAcc}, {$set: {customerBalance: details.beneficiaryBal}})/* .then(data => console.log("Beneficiary:\n"+data)).catch(e => console.log(e)) */
+  const adm = await Customer.findOneAndUpdate({ accountNumber: details.adminAcc}, {$set: {customerBalance: details.adminBal}})/* .then(data => console.log("Admin:\n"+data)).catch(e => console.log(e)) */
+  console.log(ben, adm)
   res.send({message: "transaction successful"})
   }
   else{
