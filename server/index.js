@@ -14,7 +14,7 @@ const app = express();
 const corsOptions = {
   origin: "https://grip-banking-system.vercel.app/",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", 'x-api-key'],
+  credentials: true
 };
 
 app.use(cors(corsOptions));
