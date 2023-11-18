@@ -50,9 +50,8 @@ app.put("/customers/:accno", async (req, res) => {
   if(req.header('x-api-key') === process.env.API_KEY){
   const { accno } = req.params;
   const details = req.body;
-  const ben = await Customer.findByIdAndUpdate({ accountNumber: details.beneficiaryAcc}, {$set: {customerBalance: details.beneficiaryBal}})
-  const adm = await Customer.findByIdAndUpdate({ accountNumber: details.adminAcc}, {$set: {customerBalance: details.adminBal}})
-  console.log(ben, adm)
+  Customer.findOneAndUpdate({ accountNumber: details.beneficiaryAcc}, {$set: {customerBalance: details.beneficiaryBal}}).then(data => console.log("Beneficiary:\n"+data)).catch(e => console.log(e))
+  Customer.findOneAndUpdate({ accountNumber: details.adminAcc}, {$set: {customerBalance: details.adminBal}}).then(data => console.log("Admin:\n"+data)).catch(e => console.log(e))
   res.send({message: "transaction successful"})
   }
   else{
