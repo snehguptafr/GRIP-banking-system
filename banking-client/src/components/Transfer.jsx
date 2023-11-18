@@ -20,7 +20,7 @@ export default function Transfer({ onClose, api, secret, details }) {
         adminBal: details.adminBalance - amount,
       };
       console.log(updatedData)
-      fetch(api+details.accountNo , {
+      fetch(api , {
         method: "put",
         headers: {
           "Content-Type": "application/json",
