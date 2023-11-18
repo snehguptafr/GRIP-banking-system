@@ -2,9 +2,9 @@
   "name": "banking-server",
   "version": "1.0.0",
   "description": "Backend server for basic banking system. A part of internship project at The Sparks Foundation.",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sneh Gupta",
