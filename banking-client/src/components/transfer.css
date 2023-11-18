@@ -46,6 +46,9 @@
   .beneficiary-info {
     margin-bottom: 20px;
   }
+  .beneficiary-info > p > span, form > label{
+    font-weight: 600;
+  }
   
   form {
     display: flex;
@@ -61,6 +64,11 @@
     border: 1px solid #ddd;
     border-radius: 3px;
     margin-bottom: 10px;
+    margin-left: 10px;
+  }
+
+  input:focus{
+    outline: none;
   }
   
   .pay-btn {
