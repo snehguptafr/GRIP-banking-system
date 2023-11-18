@@ -1,5 +1,3 @@
-/* OverlayForm.css */
-
 .overlay {
     position: fixed;
     top: 0;
@@ -13,7 +11,7 @@
   }
   
   .overlay-content {
-    background: #2c3e50; /* Same color as the navbar background */
+    background: #2c3e50;
     padding: 20px;
     border-radius: 5px;
     width: 400px;
