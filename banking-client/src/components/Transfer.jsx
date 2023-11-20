@@ -21,7 +21,7 @@ export default function Transfer({ onClose, api, secret, details }) {
       };
       console.log(updatedData)
       fetch(api , {
-        method: "PUT",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           "x-api-key": secret,

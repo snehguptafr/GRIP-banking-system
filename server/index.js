@@ -47,7 +47,7 @@ app.get("/customers", async (req, res) => {
   }
 });
 
-app.put("/customers", async (req, res) => {
+app.patch("/customers", async (req, res) => {
   if(req.header('x-api-key') === process.env.API_KEY){
   // const { accno } = req.params;
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
