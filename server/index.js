@@ -55,7 +55,7 @@ app.put("/customers", async (req, res) => {
   const ben = await Customer.findOneAndUpdate({ accountNumber: details.beneficiaryAcc}, {$set: {customerBalance: details.beneficiaryBal}})/* .then(data => console.log("Beneficiary:\n"+data)).catch(e => console.log(e)) */
   const adm = await Customer.findOneAndUpdate({ accountNumber: details.adminAcc}, {$set: {customerBalance: details.adminBal}})/* .then(data => console.log("Admin:\n"+data)).catch(e => console.log(e)) */
   console.log(ben, adm)
-  res.send({message: "transaction successful"})
+  res.send({beneficiary: ben, admin: adm})
   }
   else{
     res.status(400).send({message:"Invalid API key"})
